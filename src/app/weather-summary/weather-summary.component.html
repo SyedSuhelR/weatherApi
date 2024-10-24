@@ -1,0 +1,44 @@
+<div class="weather-summary">
+    <h2>Weather Summary for {{ selectedCity }}</h2>
+
+    <div class="weather-selection">
+        <label for="city">Choose a city:</label>
+        <select id="city" [(ngModel)]="selectedCity" (change)="onCityChange(selectedCity)">
+            <option value="Delhi">Delhi</option>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Chennai">Chennai</option>
+            <option value="Kolkata">Kolkata</option>
+            <option value="Bangalore">Bangalore</option>
+            <!-- Add more cities as needed -->
+        </select>
+    </div>
+
+    <table *ngIf="weatherSummary && weatherSummary.length > 0" class="weather-table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Average Temperature (°C)</th>
+                <th>Max Temperature (°C)</th>
+                <th>Min Temperature (°C)</th>
+                <th>Dominant Condition</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let summary of weatherSummary">
+                <td>{{ summary.date }}</td>
+                <td>{{ summary.avgTemp | number: '1.1-1' }} °C</td>
+                <td>{{ summary.maxTemp | number: '1.1-1' }} °C</td>
+                <td>{{ summary.minTemp | number: '1.1-1' }} °C</td>
+                <td>{{ summary.dominantCondition }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div *ngIf="errorMessage">
+        <p class="error">{{ errorMessage }}</p>
+    </div>
+
+    <div *ngIf="!weatherSummary || weatherSummary.length === 0">
+        <p>No weather data available.</p>
+    </div>
+</div>

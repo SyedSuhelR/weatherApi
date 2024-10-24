@@ -1,0 +1,42 @@
+/* weather.component.css */
+.weather-selection {
+    margin-bottom: 20px;
+  }
+  
+  .weather-selection label {
+    margin-right: 10px;
+  }
+  
+  .weather-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .weather-table th, .weather-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .weather-table th {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .weather-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .weather-table tr:hover {
+    background-color: #ddd;
+  }
+  
+  .error {
+    color: red;
+    margin-top: 20px;
+  }
+  
+  .current-weather h2{
+    text-align: center;
+  }

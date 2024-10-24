@@ -1,0 +1,112 @@
+<!-- 
+  
+  <div *ngIf="currentWeather">
+    <div class="current-weather">
+      <h2>Current Weather for {{ selectedCity }}</h2>
+      <div class="weather-selection">
+        <label for="city">Choose a city:</label>
+        <select id="city" [(ngModel)]="selectedCity" (change)="fetchCurrentWeather()">
+          <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+        </select>
+      </div>
+      <table class="weather-table">
+        <tr>
+          <th>Parameter</th>
+          <th>Value</th>
+        </tr>
+        <tr>
+          <td>Temperature</td>
+          <td>{{ currentWeather.temp }} °C</td>
+        </tr>
+        <tr>
+          <td>Feels Like</td>
+          <td>{{ currentWeather.feelsLike }} °C</td>
+        </tr>
+        <tr>
+          <td>Condition</td>
+          <td>{{ currentWeather.main }}</td>
+        </tr>
+        <tr>
+          <td>Timestamp</td>
+          <td>{{ currentWeather.timestamp | date:'short' }}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  
+  <div *ngIf="!currentWeather && !errorMessage">
+    <p>No current weather data available.</p>
+  </div>
+  
+  <div *ngIf="errorMessage" class="error">
+    <p>{{ errorMessage }}</p>
+  </div>
+  <app-weather-alert [alert]="alerts"></app-weather-alert>
+
+
+  
+
+
+    -->
+
+
+
+
+
+
+
+    <div *ngIf="currentWeather">
+        <div class="current-weather">
+          <h2>Current Weather for {{ selectedCity }}</h2>
+      
+          <div class="weather-selection">
+            <label for="city">Choose a city:</label>
+            <select id="city" [(ngModel)]="selectedCity" (change)="onCityChange()">
+              <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+            </select>
+          </div>
+      
+          <div class="unit-selection">
+            <label for="unit">Choose temperature unit:</label>
+            <select id="unit" [(ngModel)]="temperatureUnit" (change)="onUnitChange()">
+              <option value="Celsius">Celsius</option>
+              <option value="Kelvin">Kelvin</option>
+            </select>
+          </div>
+      
+          <table class="weather-table">
+            <tr>
+              <th>Parameter</th>
+              <th>Value</th>
+            </tr>
+            <tr>
+              <td>Temperature</td>
+              <td>{{ temperature }} °{{ temperatureUnit === 'Celsius' ? 'C' : 'K' }}</td>
+            </tr>
+            <tr>
+              <td>Feels Like</td>
+              <td>{{ currentWeather.feelsLike }} °C</td>
+            </tr>
+            <tr>
+              <td>Condition</td>
+              <td>{{ currentWeather.main }}</td>
+            </tr>
+            <tr>
+              <td>Timestamp</td>
+              <td>{{ currentWeather.timestamp | date:'short' }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      
+      <div *ngIf="!currentWeather && !errorMessage">
+        <p>No current weather data available.</p>
+      </div>
+      
+      <div *ngIf="errorMessage" class="error">
+        <p>{{ errorMessage }}</p>
+      </div>
+      
+      <!-- Display alerts if available -->
+      <app-weather-alert [alert]="alerts"></app-weather-alert>
+      
